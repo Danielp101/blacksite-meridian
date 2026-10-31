@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071018">
+    <meta name="description" content="Blacksite: Meridian — a dependency-free browser FPS.">
+    <title>Blacksite: Meridian</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main id="game-shell" class="game-shell" data-phase="briefing">
+      <canvas id="game-canvas" tabindex="-1" aria-label="First-person game view">
+        Your browser needs Canvas 2D to run Blacksite: Meridian.
+      </canvas>
+
+      <div class="scanlines" aria-hidden="true"></div>
+      <div id="damage-flash" class="damage-flash" aria-hidden="true"></div>
+
+      <section id="hud" class="hud" aria-label="Game status" aria-hidden="true">
+        <div class="hud-block hud-mission">
+          <span class="hud-label">Meridian relay</span>
+          <strong id="wave-value">Wave 01</strong>
+          <span id="hostiles-value">3 signals</span>
+        </div>
+        <div class="hud-block hud-score">
+          <span class="hud-label">Recovered signal</span>
+          <strong id="score-value">000000</strong>
+        </div>
+        <div class="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div id="hit-marker" class="hit-marker" aria-hidden="true">×</div>
+        <div class="hud-block hud-health">
+          <span class="hud-label">Operator pulse</span>
+          <div class="meter"><i id="health-meter"></i></div>
+          <strong id="health-value">100</strong>
+        </div>
+        <div class="hud-block hud-ammo">
+          <span id="weapon-state" class="hud-label">Sidearm ready</span>
+          <strong><span id="ammo-value">8</span><small> / <span id="reserve-value">40</span></small></strong>
+        </div>
+        <p id="wave-notice" class="wave-notice" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="briefing" class="overlay briefing" aria-labelledby="game-title">
+        <div class="briefing-card">
+          <p class="station-mark">M–72 / Polar relay archive</p>
+          <h1 id="game-title"><span>Blacksite:</span> Meridian</h1>
+          <p class="lead">The station is broadcasting again. Enter the dark, recover its signal, and keep the sentries off the air.</p>
+          <dl class="mission-data">
+            <div><dt>Sector</dt><dd>Meridian vault</dd></div>
+            <div><dt>Weather</dt><dd>Whiteout / −38°C</dd></div>
+            <div><dt>Objective</dt><dd>Survive the relay</dd></div>
+          </dl>
+          <label class="player-field" for="player-name">
+            <span>Operator name</span>
+            <input id="player-name" name="playerName" type="text" maxlength="32" autocomplete="nickname" placeholder="Enter your name" required>
+          </label>
+          <button id="start-button" class="action-button" type="button">Enter the station</button>
+          <div class="controls" aria-label="Controls">
+            <span><kbd>W A S D</kbd> Move</span>
+            <span><kbd>Mouse / ← →</kbd> Look</span>
+            <span><kbd>Click</kbd> Fire</span>
+            <span><kbd>Shift</kbd> Sprint</span>
+            <span><kbd>R</kbd> Reload</span>
+            <span><kbd>P / Esc</kbd> Pause</span>
+          </div>
+          <p class="pointer-note">Clicking play enables pointer lock. In Codex tabs, drag or use ← → to look.</p>
+        </div>
+      </section>
+
+      <section id="pause-panel" class="overlay compact-panel" aria-labelledby="pause-title" hidden>
+        <div class="status-card">
+          <p class="station-mark">Connection interrupted</p>
+          <h2 id="pause-title">Relay paused</h2>
+          <p id="pause-message">Click below to recapture the signal and continue.</p>
+          <button id="resume-button" class="action-button" type="button">Resume operation</button>
+          <p><kbd>P</kbd> also resumes &nbsp;·&nbsp; <kbd>R</kbd> reloads</p>
+        </div>
+      </section>
+
+      <section id="gameover-panel" class="overlay compact-panel" aria-labelledby="gameover-title" hidden>
+        <div class="status-card report-card">
+          <p class="station-mark">Final transmission</p>
+          <h2 id="gameover-title">Signal lost</h2>
+          <dl class="run-report">
+            <div><dt>Wave reached</dt><dd id="final-wave">01</dd></div>
+            <div><dt>Sentries down</dt><dd id="final-kills">00</dd></div>
+            <div><dt>Signal score</dt><dd id="final-score">000000</dd></div>
+          </dl>
+          <p id="score-submit-status" class="score-submit-status" role="status" aria-live="polite">Score standing by.</p>
+          <button id="restart-button" class="action-button" type="button">Re-enter the station</button>
+          <p>Press <kbd>Enter</kbd> to restart.</p>
+        </div>
+      </section>
+
+      <p id="status-live" class="sr-only" aria-live="polite"></p>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
