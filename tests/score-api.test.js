@@ -7,6 +7,10 @@ import {
   submitScore,
 } from '../src/score-api.js';
 
+test('uses the current class arcade score endpoint', () => {
+  assert.equal(SCORE_ENDPOINT, 'https://ai-club-arcade.vercel.app/api/scores');
+});
+
 test('buildScorePayload trims the name and preserves the final numeric score', () => {
   assert.deepEqual(buildScorePayload('  Ada Lovelace  ', 1270), {
     playerName: 'Ada Lovelace',
