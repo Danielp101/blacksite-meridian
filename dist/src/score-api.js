@@ -1,4 +1,4 @@
-export const SCORE_ENDPOINT = 'https://ai-club-arcade-1t3z.vercel.app/api/scores';
+export const SCORE_ENDPOINT = 'https://ai-club-arcade.vercel.app/api/scores';
 
 export function buildScorePayload(playerName, score) {
   const normalizedName = String(playerName ?? '').trim().replace(/\s+/g, ' ').slice(0, 32);
