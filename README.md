@@ -55,7 +55,7 @@ The pistol holds 8 rounds. Reloading transfers rounds from the reserve and takes
 
 ## Class arcade integration
 
-Score submissions are handled by `src/score-api.js`. The game sends this JSON contract to `https://ai-club-arcade-1t3z.vercel.app/api/scores`:
+Score submissions are handled by `src/score-api.js`. The game sends this JSON contract to `https://ai-club-arcade.vercel.app/api/scores`:
 
 ```json
 {
